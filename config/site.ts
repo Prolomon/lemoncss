@@ -7,19 +7,19 @@ export const siteConfig = {
   navItems: [
     {
       label: "Documentation",
-      href: "https://github.com/lemoncss", // Using /installation for now, as it's an existing path
+      href: "https://github.com/Prolomon/lemoncss/blob/main/README.md", // Using /installation for now, as it's an existing path
     },
     {
       label: "GitHub",
-      href: "https://github.com/lemoncss",
+      href: "https://github.com/Prolomon/lemoncss.git",
       target: "_blank",
     },
   ],
   links: {
-    github: "https://github.com/lemoncss",
+    github: "https://github.com/Prolomon/lemoncss.git",
     twitter: "https://twitter.com/hero_ui",
-    docs: "https://heroui.com",
+    docs: "https://lemoncss.vercel.app",
     discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
+    sponsor: "https://github.com/sponsors/Prolomon",
   },
 };
