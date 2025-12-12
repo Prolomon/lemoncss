@@ -33,11 +33,12 @@ export default function Home() {
             </Link>
             <Link
               isExternal
-              href="https://github.com/lemoncss"
+              href="https://github.com/Prolomon/lemoncss.git"
               className={buttonStyles({
                 variant: "bordered",
                 radius: "full",
-                className: "text-default-900 border-default-600 hover:bg-default-600/10",
+                className:
+                  "text-default-900 border-default-600 hover:bg-default-600/10",
               })}
             >
               <Github className="mr-2" size={20} />
