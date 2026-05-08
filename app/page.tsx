@@ -1,142 +1,124 @@
 import Image from "next/image";
-import { button as buttonStyles } from "@heroui/theme";
 import { Link } from "@heroui/link";
-import { Code, Download, Github } from "lucide-react";
+import { Download, Github, Zap, Shield, Sparkles, Smartphone, Globe } from "lucide-react";
+import { LemonButton } from "@/components/lemon-ui/LemonButton";
+import { LemonCard } from "@/components/lemon-ui/LemonCard";
+import { LemonContainer } from "@/components/lemon-ui/LemonContainer";
+import { Lemon } from "@/lib/lemon";
 
 export default function Home() {
   return (
-    <div className="text-white">
+    <div style={{ ...Lemon.minHeight("100vh"), ...Lemon.backgroundColor("#000"), ...Lemon.color("#fff") }}>
       {/* Hero Section */}
-      <section className="grid items-center grid-cols-l lg:grid-cols-2 gap-6 py-16">
-        <div className="flex flex-col gap-6">
-          <div className="">
-            <h1 className="text-5xl md:text-7xl font-bold text-default-900">
+      <section style={{ ...Lemon.paddingTop(80), ...Lemon.paddingBottom(80) }}>
+        <LemonContainer>
+          <div style={{ ...Lemon.display("flex"), ...Lemon.flexDirection("column"), ...Lemon.alignItems("center"), ...Lemon.textAlign("center"), ...Lemon.gap(24) }}>
+            <div style={{ ...Lemon.position("relative"), ...Lemon.width(200), ...Lemon.height(200) }}>
+               <Image
+                src="/images/lemon-1.png"
+                alt="Lemon CSS Logo"
+                fill
+                style={{ objectFit: "contain" }}
+                priority
+              />
+            </div>
+            <h1 style={{ ...Lemon.fontSize(64), ...Lemon.fontWeight("900"), ...Lemon.marginBottom(0), ...Lemon.background("linear-gradient(to right, #facc15, #eab308)"), WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" as any }}>
               Lemon CSS
             </h1>
-            <p className="mt-4 text-lg md:text-xl text-default-600">
-              The definitive styling solution for modern Android applications.
-              Create beautiful, responsive, and professional UIs with ease.
+            <p style={{ ...Lemon.fontSize(20), ...Lemon.color("#999"), ...Lemon.maxWidth(700), ...Lemon.lineHeight(1.6) }}>
+              The professional styling engine for modern applications.
+              One pattern, infinite possibilities. Works seamlessly on <strong>Web</strong> and <strong>Mobile</strong>.
             </p>
+            <div style={{ ...Lemon.display("flex"), ...Lemon.gap(16), ...Lemon.marginTop(12) }}>
+              <Link href="/docs">
+                <LemonButton size="lg">
+                  <Download size={20} style={{ ...Lemon.marginRight(8) }} />
+                  Get Started
+                </LemonButton>
+              </Link>
+              <Link isExternal href="https://github.com/Prolomon/lemoncss.git">
+                <LemonButton size="lg" variant="secondary">
+                  <Github size={20} style={{ ...Lemon.marginRight(8) }} />
+                  GitHub
+                </LemonButton>
+              </Link>
+            </div>
           </div>
-          <div className="flex gap-4">
-            <Link
-              href="/lemon.zip"
-              className={buttonStyles({
-                color: "primary",
-                radius: "full",
-                variant: "shadow",
-                className: "bg-royal-purple text-white",
-              })}
-            >
-              <Download className="mr-2" size={20} />
-              Download
-            </Link>
-            <Link
-              isExternal
-              href="https://github.com/Prolomon/lemoncss.git"
-              className={buttonStyles({
-                variant: "bordered",
-                radius: "full",
-                className:
-                  "text-default-900 border-default-600 hover:bg-default-600/10",
-              })}
-            >
-              <Github className="mr-2" size={20} />
-              GitHub
-            </Link>
-          </div>
-        </div>
-        <Image
-          src="/images/gray-lemon.png"
-          alt="lemon image"
-          width={600}
-          height={250}
-        />
+        </LemonContainer>
       </section>
 
-      {/* Showcase Section */}
-      <section className="py-20 md:py-28 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-default-900">
-            Stunning UIs, Simplified
+      {/* Cross-Platform Section */}
+      <section style={{ ...Lemon.paddingTop(60), ...Lemon.paddingBottom(60), ...Lemon.borderTop("1px solid #222"), ...Lemon.borderBottom("1px solid #222") }}>
+        <LemonContainer>
+          <div style={{ ...Lemon.display("flex"), ...Lemon.justifyContent("center"), ...Lemon.gap(48), ...Lemon.flexWrap("wrap") }}>
+            <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(12) }}>
+              <Globe size={24} style={{ ...Lemon.color("#facc15") }} />
+              <span style={{ ...Lemon.fontSize(18), ...Lemon.fontWeight("600") }}>Web Ready</span>
+            </div>
+            <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(12) }}>
+              <Smartphone size={24} style={{ ...Lemon.color("#facc15") }} />
+              <span style={{ ...Lemon.fontSize(18), ...Lemon.fontWeight("600") }}>Mobile Native</span>
+            </div>
+          </div>
+        </LemonContainer>
+      </section>
+
+      {/* Features Section */}
+      <section style={{ ...Lemon.paddingTop(100), ...Lemon.paddingBottom(100), ...Lemon.backgroundColor("#0a0a0a") }}>
+        <LemonContainer>
+          <h2 style={{ ...Lemon.fontSize(40), ...Lemon.textAlign("center"), ...Lemon.marginBottom(60) }}>
+            Why Choose Lemon?
           </h2>
-          <p className="mt-4 text-lg text-default-600 max-w-2xl mx-auto">
-            Lemon provides a set of pre-built components and a flexible theming
-            system that enables you to build beautiful Android apps faster.
-          </p>
-        </div>
+          <div style={{ ...Lemon.display("grid"), ...Lemon.gridTemplateColumns("repeat(auto-fit, minmax(300px, 1fr))"), ...Lemon.gap(32) }}>
+            <LemonCard title="Blazing Fast">
+              <Zap size={32} style={{ ...Lemon.color("#facc15"), ...Lemon.marginBottom(16) }} />
+              <p>Zero-runtime overhead with our proxy-based styling engine. Your apps stay snappy and responsive.</p>
+            </LemonCard>
+            <LemonCard title="Type Safe">
+              <Shield size={32} style={{ ...Lemon.color("#facc15"), ...Lemon.marginBottom(16) }} />
+              <p>Fully typed styles ensure you never make a typo. Enjoy autocompletion for all your design tokens.</p>
+            </LemonCard>
+            <LemonCard title="Stunning Results">
+              <Sparkles size={32} style={{ ...Lemon.color("#facc15"), ...Lemon.marginBottom(16) }} />
+              <p>Create professional-grade UIs with ease using our curated set of components and utilities.</p>
+            </LemonCard>
+          </div>
+        </LemonContainer>
+      </section>
 
-        <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
-          {/* Phone Mockup */}
-          <div className="flex justify-center">
-            <div className="w-64 h-[480px] bg-gray-800 rounded-3xl border-4 border-gray-700 shadow-2xl overflow-hidden">
-              <div className="w-full h-full bg-gray-900 p-4">
-                <div className="space-y-4">
-                  <div className="w-full h-24 bg-royal-purple rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                    Featured Card
-                  </div>
-                  <div className="w-full h-10 bg-gray-700 rounded-md"></div>
-                  <div className="w-3/4 h-10 bg-gray-700 rounded-md"></div>
-                  <div className="flex gap-4">
-                    <div className="w-1/2 h-16 bg-gray-700 rounded-md"></div>
-                    <div className="w-1/2 h-16 bg-gray-700 rounded-md"></div>
-                  </div>
-                </div>
-              </div>
+      {/* Visual Showcase */}
+      <section style={{ ...Lemon.paddingTop(100), ...Lemon.paddingBottom(100) }}>
+        <LemonContainer>
+          <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(60), ...Lemon.flexWrap("wrap") }}>
+            <div style={{ ...Lemon.flex(1), ...Lemon.minWidth(300) }}>
+              <h2 style={{ ...Lemon.fontSize(48), ...Lemon.marginBottom(24) }}>Design with Precision</h2>
+              <p style={{ ...Lemon.fontSize(18), ...Lemon.color("#999"), ...Lemon.marginBottom(32) }}>
+                Lemon CSS allows you to define your styles in a way that feels natural to developers.
+                Whether you're building for the browser or for native devices, the experience is the same.
+              </p>
+              <Link href="/how-it-works">
+                <LemonButton variant="primary">Learn How It Works</LemonButton>
+              </Link>
+            </div>
+            <div style={{ ...Lemon.flex(1), ...Lemon.minWidth(300), ...Lemon.position("relative"), ...Lemon.height(400), ...Lemon.borderRadius(24), ...Lemon.overflow("hidden") }}>
+              <Image
+                src="/images/lemon-2.png"
+                alt="Lemon Showcase"
+                fill
+                style={{ objectFit: "cover" }}
+              />
             </div>
           </div>
-
-          {/* Code Snippet */}
-          <div className="bg-gray-800/50 rounded-lg p-6 border border-white/10">
-            <div className="flex items-center gap-2 mb-4">
-              <Code size={20} className="text-royal-purple" />
-              <h3 className="text-xl font-semibold">Jetpack Compose Example</h3>
-            </div>
-            <pre className="bg-gray-900/70 p-4 rounded-md text-sm overflow-x-auto">
-              <code className="font-mono text-gray-300">
-                {`
-import { Lemon } from "@/public/lemon";
-export function LemonCard() {
-  return (
-  <div style={{...Lemon.display("flex"), ...Lemon.justifyContent("center")}}>
-    <div style={{...Lemon.width(256), ...Lemon.height(480), ...Lemon.background("#ccc"), ...Lemon.borderRadius(22), ...Lemon.borderWidth(4), ...Lemon.overflow("hidden")}}>
-      <div style={{...Lemon.width("100%"), ...Lemon.height("100%"), ...Lemon.background("#afafaf"), ...Lemon.padding(16)}}>
-        <div>
-          <div style={{...Lemon.width("100%"), ...Lemon.height(96), ...Lemon.background("royal-purple"), ...Lemon.borderRadius(20), ...Lemon.display("flex"), ...Lemon.justifyContent("center"), ...Lemon.color("white"), ...Lemon.fontWeight("bold"), ...Lemon.fontSize(18)}}>
-                    Featured Card
-          </div>
-          <div style={{...Lemon.width("100%"), ...Lemon.height(40), ...Lemon.background("#ccc"), ...Lemon.borderRadius(15)}}></div>
-          <div style={{...Lemon.width("75%"), ...Lemon.height(40), ...Lemon.background("#ccc"), ...Lemon.borderRadius(15)}}></div>
-          <div style={{...Lemon.display("flex"), ...Lemon.gap(16)}}>
-            <div style={{...Lemon.width("50%"), ...Lemon.height(64), ...Lemon.background("#ccc"), ...Lemon.borderRadius(20)}}></div>
-            <div style={{...Lemon.width("50%"), ...Lemon.height(64), ...Lemon.background("#ccc"), ...Lemon.borderRadius(20)}}></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>)
-}
-                `}
-              </code>
-            </pre>
-            <p className="mt-4 text-sm text-default-600">
-              With Lemon's intuitive components, your code becomes cleaner and
-              more readable.
-            </p>
-          </div>
-        </div>
+        </LemonContainer>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 text-center text-default-600 border-t border-default-600/10">
-        <p>&copy; ${new Date().getFullYear()} Lemon. All rights reserved.</p>
-        <Link
-          isExternal
-          href="https://github.com/heroui-inc/heroui"
-          className="text-sm text-default-600 hover:text-royal-purple"
-        >
-          GitHub Repository
-        </Link>
+      <footer style={{ ...Lemon.paddingTop(60), ...Lemon.paddingBottom(60), ...Lemon.borderTop("1px solid #222"), ...Lemon.textAlign("center") }}>
+        <LemonContainer>
+          <p style={{ ...Lemon.color("#666") }}>
+            &copy; {new Date().getFullYear()} Lemon CSS. Built for professionals.
+          </p>
+        </LemonContainer>
       </footer>
     </div>
   );

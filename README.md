@@ -10,7 +10,7 @@ Here is an example of how to use it in a React component:
 ## For React
 
 ```tsx
-import { Lemon } from "@/public/lemon";
+import { Lemon } from "@/lib/lemon";
 
 export function LemonCard() {
   return (
@@ -38,7 +38,7 @@ export function LemonCard() {
 ```tsx
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Lemon } from '@/public/lemon'; // Assuming Lemon is compatible with React Native
+import { Lemon } from '@/lib/lemon'; // Assuming Lemon is compatible with React Native
 
 export function LemonCard() {
   return (

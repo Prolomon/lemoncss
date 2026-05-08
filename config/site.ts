@@ -6,8 +6,16 @@ export const siteConfig = {
     "The definitive styling solution for modern Android applications. Create beautiful, responsive, and professional UIs with ease.",
   navItems: [
     {
-      label: "Documentation",
-      href: "https://github.com/Prolomon/lemoncss/blob/main/README.md", // Using /installation for now, as it's an existing path
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "Docs",
+      href: "/docs",
+    },
+    {
+      label: "How It Works",
+      href: "/how-it-works",
     },
     {
       label: "GitHub",
