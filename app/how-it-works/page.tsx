@@ -1,117 +1,95 @@
-import React from "react";
+import { Lemon } from "@/lib/lemon";
 import { LemonContainer } from "@/components/lemon-ui/LemonContainer";
 import { LemonCard } from "@/components/lemon-ui/LemonCard";
-import { Lemon } from "@/lib/lemon";
-import { Settings, Cpu, Layers, Smartphone, Globe } from "lucide-react";
+import { Cpu, Zap, Smartphone, Globe, Layers, Repeat } from "lucide-react";
 
-export default function HowItWorksPage() {
+export default function HowItWorks() {
   return (
-    <div style={{ ...Lemon.minHeight("100vh"), ...Lemon.backgroundColor("#000"), ...Lemon.color("#fff"), ...Lemon.paddingTop(60), ...Lemon.paddingBottom(100) }}>
-      <LemonContainer>
-        <div style={{ ...Lemon.marginBottom(60), ...Lemon.textAlign("center") }}>
-          <h1 style={{ ...Lemon.fontSize(48), ...Lemon.fontWeight("bold"), ...Lemon.marginBottom(16) }}>How It Works</h1>
-          <p style={{ ...Lemon.fontSize(20), ...Lemon.color("#999"), ...Lemon.maxWidth(800), ...Lemon.marginLeft("auto"), ...Lemon.marginRight("auto") }}>
-            Deep dive into the architecture of Lemon CSS and its unique multi-platform capabilities.
-          </p>
-        </div>
+    <section style={{ ...Lemon.backgroundColor("#000"), ...Lemon.minHeight("100vh"), ...Lemon.padding("80px 40px") }}>
+      <div style={{ ...Lemon.maxWidth(1000), ...Lemon.margin("0 auto") }}>
+        <h1 style={{ ...Lemon.fontSize(64), ...Lemon.fontWeight("900"), ...Lemon.color("#fff"), ...Lemon.marginBottom(24), ...Lemon.textAlign("center") }}>
+          How <span style={{ ...Lemon.color("#facc15") }}>Lemon</span> Works
+        </h1>
+        <p style={{ ...Lemon.fontSize(20), ...Lemon.color("#999"), ...Lemon.textAlign("center"), ...Lemon.marginBottom(80), ...Lemon.lineHeight(1.6) }}>
+          Deep dive into the architecture of Lemon CSS and its unique multi-platform capabilities.
+        </p>
 
-        <div style={{ ...Lemon.display("flex"), ...Lemon.flexDirection("column"), ...Lemon.gap(48) }}>
-          <section>
-            <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(16), ...Lemon.marginBottom(24) }}>
-              <Cpu size={32} style={{ ...Lemon.color("#facc15") }} />
-              <h2 style={{ ...Lemon.fontSize(32) }}>The Proxy Engine</h2>
-            </div>
-            <LemonCard>
-              <p style={{ ...Lemon.marginBottom(16), ...Lemon.lineHeight(1.6) }}>
-                Lemon CSS uses JavaScript <code>Proxy</code> objects to intercept property accesses.
-                When you access <code>Lemon.backgroundColor("primary")</code>, the proxy captures the
-                "backgroundColor" property and the "primary" argument.
-              </p>
-              <pre style={{ ...Lemon.background("#111"), ...Lemon.padding(16), ...Lemon.borderRadius(8), ...Lemon.fontSize(14), ...Lemon.overflow("auto") }}>
-                <code>{`// Simplified internal logic
+        {/* The Proxy Engine */}
+        <div style={{ ...Lemon.marginBottom(80) }}>
+          <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(16), ...Lemon.marginBottom(32) }}>
+            <Cpu color="#facc15" size={40} />
+            <h2 style={{ ...Lemon.fontSize(32), ...Lemon.fontWeight("bold"), ...Lemon.color("#fff") }}>The Proxy Engine</h2>
+          </div>
+          <LemonCard>
+            <p style={{ ...Lemon.marginBottom(24), ...Lemon.lineHeight(1.7) }}>
+              Lemon CSS uses JavaScript Proxy objects to intercept property accesses. When you access <code>Lemon.backgroundColor("primary")</code>, the proxy captures the "backgroundColor" property and the "primary" argument.
+            </p>
+            <pre style={{ ...Lemon.background("#050505"), ...Lemon.padding(24), ...Lemon.borderRadius(12), ...Lemon.border("1px solid #222"), ...Lemon.overflow("auto") }}>
+              <code style={{ ...Lemon.color("#ccc") }}>{`// Simplified internal logic
 const Lemon = new Proxy({}, {
   get(target, prop) {
     return (value) => ({ [prop]: resolveValue(value) });
   }
 });`}</code>
-              </pre>
-            </LemonCard>
-          </section>
-
-          <section>
-            <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(16), ...Lemon.marginBottom(24) }}>
-              <Globe size={32} style={{ ...Lemon.color("#facc15") }} />
-              <h2 style={{ ...Lemon.fontSize(32) }}>Web & Mobile Synergy</h2>
-            </div>
-            <LemonCard>
-              <p style={{ ...Lemon.marginBottom(16), ...Lemon.lineHeight(1.6) }}>
-                The core philosophy of Lemon is <strong>Write Once, Style Everywhere</strong>.
-                Because the output is a plain JavaScript object, it is compatible with both
-                React's <code>style</code> prop (for Web) and React Native's <code>style</code> prop (for Mobile).
-              </p>
-              <div style={{ ...Lemon.display("grid"), ...Lemon.gridTemplateColumns("1fr 1fr"), ...Lemon.gap(24), ...Lemon.marginTop(16) }}>
-                <div style={{ ...Lemon.padding(16), ...Lemon.border("1px solid #333"), ...Lemon.borderRadius(8) }}>
-                  <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(8), ...Lemon.marginBottom(8) }}>
-                    <Globe size={16} /> <strong>Web</strong>
-                  </div>
-                  <code style={{ ...Lemon.fontSize(12) }}>{`<div style={Lemon.padding(16)} />`}</code>
-                </div>
-                <div style={{ ...Lemon.padding(16), ...Lemon.border("1px solid #333"), ...Lemon.borderRadius(8) }}>
-                  <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(8), ...Lemon.marginBottom(8) }}>
-                    <Smartphone size={16} /> <strong>Mobile</strong>
-                  </div>
-                  <code style={{ ...Lemon.fontSize(12) }}>{`<View style={Lemon.padding(16)} />`}</code>
-                </div>
-              </div>
-            </LemonCard>
-          </section>
-
-          <section>
-            <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(16), ...Lemon.marginBottom(24) }}>
-              <Settings size={32} style={{ ...Lemon.color("#facc15") }} />
-              <h2 style={{ ...Lemon.fontSize(32) }}>Config Resolution</h2>
-            </div>
-            <LemonCard>
-              <p style={{ ...Lemon.marginBottom(16), ...Lemon.lineHeight(1.6) }}>
-                The engine checks your <code>lemon.config.ts</code> for predefined tokens.
-                If a property access matches a config key (like "primary" for colors or "lg" for sizes),
-                it automatically resolves to the configured value.
-              </p>
-              <div style={{ ...Lemon.display("grid"), ...Lemon.gridTemplateColumns("1fr 1fr"), ...Lemon.gap(24) }}>
-                <div>
-                  <h4 style={{ ...Lemon.marginBottom(8) }}>Config</h4>
-                  <pre style={{ ...Lemon.background("#111"), ...Lemon.padding(12), ...Lemon.borderRadius(8), ...Lemon.fontSize(12) }}>
-                    <code>{`colors: {
-  primary: "#007bff"
-}`}</code>
-                  </pre>
-                </div>
-                <div>
-                  <h4 style={{ ...Lemon.marginBottom(8) }}>Result</h4>
-                  <pre style={{ ...Lemon.background("#111"), ...Lemon.padding(12), ...Lemon.borderRadius(8), ...Lemon.fontSize(12) }}>
-                    <code>{`Lemon.color.primary
-// -> { color: "#007bff" }`}</code>
-                  </pre>
-                </div>
-              </div>
-            </LemonCard>
-          </section>
-
-          <section>
-            <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(16), ...Lemon.marginBottom(24) }}>
-              <Layers size={32} style={{ ...Lemon.color("#facc15") }} />
-              <h2 style={{ ...Lemon.fontSize(32) }}>Zero Runtime CSS</h2>
-            </div>
-            <LemonCard>
-              <p style={{ ...Lemon.marginBottom(16), ...Lemon.lineHeight(1.6) }}>
-                Unlike traditional CSS-in-JS libraries that inject style tags, Lemon generates
-                plain JavaScript objects that are passed directly to the <code>style</code> attribute.
-                This means zero style recalculations and no extra DOM elements.
-              </p>
-            </LemonCard>
-          </section>
+            </pre>
+          </LemonCard>
         </div>
-      </LemonContainer>
+
+        {/* Platform Synergy */}
+        <div style={{ ...Lemon.marginBottom(80) }}>
+          <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(16), ...Lemon.marginBottom(32) }}>
+            <Repeat color="#facc15" size={40} />
+            <h2 style={{ ...Lemon.fontSize(32), ...Lemon.fontWeight("bold"), ...Lemon.color("#fff") }}>Platform Synergy</h2>
+          </div>
+          <div style={{ ...Lemon.display("grid"), ...Lemon.gridTemplateColumns("1fr 1fr"), ...Lemon.gap(32) }}>
+            <LemonCard title="Web React">
+              <p style={{ ...Lemon.marginBottom(20) }}>Maps to standard CSS properties. Supports hover, media queries (via runtime detection), and all CSS units.</p>
+              <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(8), ...Lemon.color("#facc15") }}>
+                <Globe size={18} />
+                <span>Standard CSS Engine</span>
+              </div>
+            </LemonCard>
+            <LemonCard title="Mobile React Native">
+              <p style={{ ...Lemon.marginBottom(20) }}>Maps to Yoga layout properties. Automatically handles unit conversions and platform-specific styling constraints.</p>
+              <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(8), ...Lemon.color("#facc15") }}>
+                <Smartphone size={18} />
+                <span>Yoga Layout Engine</span>
+              </div>
+            </LemonCard>
+          </div>
+        </div>
+
+        {/* Why it beats conventional styles */}
+        <div style={{ ...Lemon.marginBottom(80) }}>
+          <div style={{ ...Lemon.display("flex"), ...Lemon.alignItems("center"), ...Lemon.gap(16), ...Lemon.marginBottom(32) }}>
+            <Zap color="#facc15" size={40} />
+            <h2 style={{ ...Lemon.fontSize(32), ...Lemon.fontWeight("bold"), ...Lemon.color("#fff") }}>The Competitive Edge</h2>
+          </div>
+          <div style={{ ...Lemon.display("grid"), ...Lemon.gridTemplateColumns("repeat(auto-fit, minmax(300px, 1fr))"), ...Lemon.gap(24) }}>
+            <EdgeCard
+              title="vs Tailwind"
+              text="No massive CSS files. No need for NativeWind or complex configurations for React Native."
+            />
+            <EdgeCard
+              title="vs CSS-in-JS"
+              text="Zero runtime overhead for class generation. Instant styles via pure JS object mapping."
+            />
+            <EdgeCard
+              title="vs StyleSheets"
+              text="Full composability and dynamic theming without re-declaring StyleSheet.create."
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EdgeCard({ title, text }: { title: string, text: string }) {
+  return (
+    <div style={{ ...Lemon.padding(24), ...Lemon.background("#111"), ...Lemon.borderRadius(16), ...Lemon.border("1px solid #222") }}>
+      <h3 style={{ ...Lemon.color("#facc15"), ...Lemon.fontWeight("bold"), ...Lemon.marginBottom(12) }}>{title}</h3>
+      <p style={{ ...Lemon.color("#999"), ...Lemon.fontSize(14), ...Lemon.lineHeight(1.5) }}>{text}</p>
     </div>
   );
 }

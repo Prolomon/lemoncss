@@ -10,7 +10,6 @@ import { Link } from "@heroui/link";
 import NextLink from "next/link";
 
 import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon } from "@/components/icons";
 import { usePathname } from "next/navigation";
 import { Lemon } from "@/lib/lemon";
@@ -19,7 +18,7 @@ export const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky" style={{ ...Lemon.backgroundColor("#000"), ...Lemon.borderBottom("1px solid #222") }}>
+    <HeroUINavbar maxWidth="full" position="sticky" style={{ ...Lemon.backgroundColor("#000"), ...Lemon.borderBottom("1px solid #222") }}>
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-2" href="/">
@@ -36,8 +35,8 @@ export const Navbar = () => {
                   href={item.href}
                   aria-label={item.label}
                   style={{
-                    ...Lemon.padding("0 8px"),
-                    ...Lemon.color(pathname === item.href ? "#fff" : "#999"),
+                    ...Lemon.padding("0 12px"),
+                    ...Lemon.color(pathname === item.href ? "#facc15" : "#999"),
                   }}
                 >
                   {item.label === "GitHub" ? <GithubIcon className="text-default-500" /> : item.label}
@@ -46,9 +45,10 @@ export const Navbar = () => {
                 <NextLink
                   href={item.href}
                   style={{
-                    ...Lemon.padding("0 8px"),
-                    ...Lemon.color(pathname === item.href ? "#fff" : "#999"),
+                    ...Lemon.padding("0 12px"),
+                    ...Lemon.color(pathname === item.href ? "#facc15" : "#999"),
                     ...Lemon.textDecoration("none"),
+                    ...Lemon.fontWeight(pathname === item.href ? "600" : "400"),
                   }}
                 >
                   {item.label}
@@ -64,15 +64,16 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
-          <ThemeSwitch />
+           <Link isExternal aria-label="Github" href={siteConfig.links.github} style={{ ...Lemon.color("#fff") }}>
+             <GithubIcon />
+           </Link>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
+        <Link isExternal aria-label="Github" href={siteConfig.links.github} style={{ ...Lemon.color("#fff") }}>
+          <GithubIcon />
         </Link>
-        <ThemeSwitch />
       </NavbarContent>
     </HeroUINavbar>
   );

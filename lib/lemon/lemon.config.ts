@@ -1,8 +1,8 @@
 export const config = {
   colors: {
-    primary: "#007bff",
-    secondary: "#6c757d",
-    danger: "#dc3545",
+    primary: "#facc15",
+    secondary: "#444",
+    danger: "#ef4444",
   },
   sizes: {
     sm: 8,
